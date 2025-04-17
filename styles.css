@@ -1,0 +1,125 @@
+
+:root {
+    --primary-color: #42b983;
+    --secondary-color: black;
+    --background: #f0f0f0;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Inter', sans-serif;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    line-height: 1.6;
+    background: linear-gradient(
+        100deg,
+        #3ec426 10%,        
+        rgba(46, 196, 20, 0.8) 0%,
+        rgba(0, 0, 0, 0.9) 70%,
+        #000000 100%      
+    );
+    z-index: -1;
+    backdrop-filter: blur(20px); /* Difuminado sutil */
+    
+}
+
+.header {
+    padding: 2rem;
+    text-align: center;
+}
+
+.filter-container {
+    margin: 1rem auto;
+    max-width: 300px;
+}
+
+.filter-select {
+    width: 100%;
+    padding: 0.5rem;
+    border-radius: 5px;
+    border: 2px solid var(--primary-color);
+    
+}
+
+.main-content {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+    gap: 1.5rem;
+    padding: 2rem;
+    max-width: 1200px;
+    margin: 0 auto;
+    margin-bottom: 120px;
+}
+
+.character-card {
+    background:gray;
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    transition: transform 0.3s ease;
+}
+
+.character-card:hover {
+    transform: translateY(-5px);
+}
+
+.character-image {
+    width: 100%;
+    height: 250px;
+    object-fit: cover;
+}
+
+.character-info {
+    padding: 1rem;
+}
+
+.character-name {
+    color: var(--secondary-color);
+    margin-bottom: 0.5rem;
+}
+
+.character-species {
+    color: var(--primary-color);
+    font-weight: bold;
+}
+
+.footer {
+    background-color: var(--secondary-color);
+    color: #3ec426;
+    padding: 2rem;
+    margin-top: auto;
+    margin-bottom: 0%;
+}
+
+.footer-content {
+    max-width: 1200px;
+    margin: 0 auto;
+    text-align: center;
+    font-size: 0.9rem;
+}
+
+
+.social-links {
+    margin: 1rem 0;
+}
+
+.social-links a {
+    color: #3ec426;
+    margin: 0 1rem;
+    text-decoration: none;
+}
+
+@media (max-width: 768px) {
+    .main-content {
+        grid-template-columns: 1fr;
+        padding: 1rem;
+    }
+    
+    .header {
+        padding: 1rem;
+    }
+}
