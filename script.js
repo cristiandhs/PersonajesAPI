@@ -5,7 +5,7 @@ const filter = document.getElementById('characterFilter');
 // Fetch characters from API
 async function fetchCharacters() {
     try {
-        const response = await fetch(`${API_URL}?page=1`);
+        const response = await fetch(`${API_URL}?page=2`);
         const data = await response.json();
         return data.results.slice(0, 20)
     } catch (error) {
@@ -16,17 +16,35 @@ async function fetchCharacters() {
 
 // Render characters cards
 function renderCharacters(characters) {
-    container.innerHTML = characters.map(character => `
-        <article class="character-card">
+    container.innerHTML = '';
+    
+    characters.forEach((character, index) => {
+        const card = document.createElement('article');
+        card.className = 'character-card';
+        card.style.animation = `fadeIn 0.3s ease forwards ${index * 0.1}s`;
+        card.style.opacity = '0';
+        
+        card.innerHTML = `
             <img src="${character.image}" alt="${character.name}" class="character-image">
             <div class="character-info">
                 <h2 class="character-name">${character.name}</h2>
                 <p class="character-species">${character.species}</p>
-                <p>Status: ${character.status}</p>
+                <p>Status: ${getStatusWithIcon(character.status)}</p>
                 <p>Origin: ${character.origin.name}</p>
             </div>
-        </article>
-    `).join('');
+        `;
+        
+        container.appendChild(card);
+    });
+}
+
+function getStatusWithIcon(status) {
+    const statusIcons = {
+        'Alive': '🟢',
+        'Dead': '🔴',
+        'unknown': '❓'
+    };
+    return `${statusIcons[status] || '❓'} ${status}`;
 }
 
 // Populate filter options

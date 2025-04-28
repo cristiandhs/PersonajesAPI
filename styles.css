@@ -1,8 +1,9 @@
-
 :root {
-    --primary-color: #42b983;
-    --secondary-color: black;
-    --background: #f0f0f0;
+    --primary-color: #97ce4c; /* Verde Rick and Morty */
+    --secondary-color: gray; /* Marrón oscuro */
+    --accent-color: #00b5cc; /* Azul portal */
+    --background: #121212; /* Fondo oscuro */
+    --text-light: #f0f0f0;
 }
 
 * {
@@ -13,23 +14,44 @@
 }
 
 body {
-    font-family: Arial, sans-serif;
+    font-family: 'Inter', sans-serif;
     line-height: 1.6;
     background: linear-gradient(
-        100deg,
-        #3ec426 10%,        
-        rgba(46, 196, 20, 0.8) 0%,
-        rgba(0, 0, 0, 0.9) 70%,
-        #000000 100%      
+        135deg,
+        #121212 0%,
+        #1f2f46 50%,
+        #121212 100%
     );
+    background-attachment: fixed;
+    color: var(--text-light);
     z-index: -1;
     backdrop-filter: blur(20px); /* Difuminado sutil */
-    
 }
 
 .header {
-    padding: 2rem;
+    position: relative;
+    padding: 3rem 2rem 2rem;
     text-align: center;
+}
+.header h1 {
+    padding-bottom: 20px;
+}
+
+.header::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 10%;
+    right: 10%;
+    height: 2px;
+    background: linear-gradient(90deg, transparent, var(--accent-color), transparent);
+}
+
+.header h1 {
+    font-size: 3rem;
+    color: var(--primary-color);
+    text-shadow: 0 0 10px rgba(151, 206, 76, 0.5);
+    letter-spacing: 1px;
 }
 
 .filter-container {
@@ -39,10 +61,13 @@ body {
 
 .filter-select {
     width: 100%;
-    padding: 0.5rem;
-    border-radius: 5px;
-    border: 2px solid var(--primary-color);
-    
+    padding: 0.8rem;
+    border-radius: 8px;
+    border: 2px solid var(--accent-color);
+    background-color: rgba(0, 0, 0, 0.7);
+    color: var(--text-light);
+    font-weight: 600;
+    cursor: pointer;
 }
 
 .main-content {
@@ -56,15 +81,17 @@ body {
 }
 
 .character-card {
-    background:gray;
-    border-radius: 10px;
+    background: var(--secondary-color);
+    color: var(--text-light);
+    border-radius: 12px;
     overflow: hidden;
-    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
-    transition: transform 0.3s ease;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.2), 0 0 0 2px var(--accent-color);
+    transition: all 0.3s ease;
 }
 
 .character-card:hover {
-    transform: translateY(-5px);
+    transform: translateY(-8px) scale(1.02);
+    box-shadow: 0 8px 20px rgba(0, 181, 204, 0.3), 0 0 0 3px var(--accent-color);
 }
 
 .character-image {
@@ -88,7 +115,8 @@ body {
 }
 
 .footer {
-    background-color: var(--secondary-color);
+    background-color: rgba(0, 0, 0, 0.8);
+    border-top: 2px solid var(--primary-color);
     color: #3ec426;
     padding: 2rem;
     margin-top: auto;
@@ -102,15 +130,21 @@ body {
     font-size: 0.9rem;
 }
 
-
 .social-links {
     margin: 1rem 0;
 }
 
 .social-links a {
-    color: #3ec426;
+    color: var(--accent-color);
     margin: 0 1rem;
     text-decoration: none;
+    font-weight: 600;
+    transition: color 0.3s;
+}
+
+.social-links a:hover {
+    color: var(--primary-color);
+    text-decoration: underline;
 }
 
 @media (max-width: 768px) {
@@ -122,4 +156,9 @@ body {
     .header {
         padding: 1rem;
     }
+}
+
+@keyframes fadeIn {
+    0% { opacity: 0; transform: translateY(20px); }
+    100% { opacity: 1; transform: translateY(0); }
 }
